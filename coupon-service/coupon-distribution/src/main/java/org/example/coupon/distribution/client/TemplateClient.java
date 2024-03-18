@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * 模板微服务调用
  */
-@FeignClient(value = "eureka-client-coupon-template", fallback = TemplateClientHystrix.class)
+@FeignClient(value = "nacos-client-coupon-template", fallback = TemplateClientHystrix.class)
 public interface TemplateClient {
 
     @GetMapping("/coupon-template/template/sdk/all")

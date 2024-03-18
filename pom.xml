@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>coupon-eureka</module>
         <module>coupon-zuul</module>
         <module>coupon-service</module>
     </modules>
@@ -24,6 +23,7 @@
         <spring-cloud.version>
             Hoxton.SR12
         </spring-cloud.version>
+        <nacos.version>2.2.9.RELEASE</nacos.version>
     </properties>
 
     <dependencies>
@@ -48,6 +48,11 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

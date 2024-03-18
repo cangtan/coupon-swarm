@@ -1,4 +1,4 @@
-package org.example.coupon.template;
+package org.example.coupon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
