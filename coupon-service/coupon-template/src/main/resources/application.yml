@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: eureka-client-coupon-template
+    name: nacos-client-coupon-template
   jpa:
     show-sql: true
     hibernate:
@@ -34,10 +34,10 @@ spring:
     port: 6379
     timeout: 10000
     password: '123456:'
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8000/eureka/
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.56.101:8848/
 
 logging:
   level:

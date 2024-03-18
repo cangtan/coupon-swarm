@@ -1,7 +1,6 @@
 package org.example.coupon.settlement.executor;
 
 import org.example.coupon.bo.SettlementInfoBO;
-import org.example.coupon.settlement.SettlementApplication;
 import org.example.coupon.settlement.constant.RuleFlag;
 
 /**

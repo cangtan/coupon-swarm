@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: eureka-client-coupon-distribution
+    name: nacos-client-coupon-distribution
   jpa:
     show-sql: true
     hibernate:
@@ -46,10 +46,9 @@ spring:
     loadbalancer:
       retry:
         enabled: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8000/eureka/
+    nacos:
+      discovery:
+        server-addr: http://192.168.56.101:8848/
 
 logging:
   level:
@@ -63,6 +62,6 @@ feign:
       default:
         connectTimeout: 2000
         readTimeout: 5000
-      eureka-client-coupon-tempalte:
+      nacos-client-coupon-tempalte:
         connectTimeout: 3000
         readTimeout: 5000

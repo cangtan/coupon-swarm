@@ -5,11 +5,11 @@ server:
 
 spring:
   application:
-    name: eureka-client-coupon-settlement
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8000/eureka/
+    name: nacos-client-coupon-settlement
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.56.101:8848/
 
 logging:
   level:

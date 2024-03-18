@@ -6,7 +6,7 @@ import org.example.coupon.distribution.client.hystrix.SettlementClientHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = "eureka-client-coupon-settlement", fallback = SettlementClientHystrix.class)
+@FeignClient(value = "nacos-client-coupon-settlement", fallback = SettlementClientHystrix.class)
 public interface SettlementClient {
 
     @PostMapping(value = "/coupon_settlement/settlement/compute")

@@ -1,6 +1,5 @@
 package org.example.coupon.advice;
 
-import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import org.example.coupon.annotaion.IgnoreResponseAdvice;
@@ -9,12 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  * 统一响应处理

@@ -1,7 +1,6 @@
 package org.example.coupon.template.controller;
 
 import com.alibaba.cola.exception.BizException;
-import com.netflix.appinfo.InstanceInfo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;

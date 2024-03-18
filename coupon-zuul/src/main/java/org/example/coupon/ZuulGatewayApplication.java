@@ -1,4 +1,4 @@
-package org.example.coupon.zuul;
+package org.example.coupon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
