@@ -1,0 +1,27 @@
+server:
+  port: 7003
+  servlet:
+    context-path: /coupon_settlement
+
+spring:
+  application:
+    name: nacos-client-coupon-settlement
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.56.101:8848/
+
+logging:
+  level:
+    org.example.coupon: debug
+dubbo:
+  application:
+    # 不要与实例的名称相同
+    name: dubbo-client-coupon-settlement
+    #单机环境多实例启动dubbo时会爆出 qos-server can not bind localhost:22222
+    qos-port: 22224
+  protocol:
+    name: dubbo
+    port: 20882
+  registry:
+    address: nacos://192.168.56.101:8848

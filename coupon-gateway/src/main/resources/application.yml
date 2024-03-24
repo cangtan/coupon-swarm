@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: coupon-gateway #配置微服务id
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.56.101:8848 #nacos通信地址
+    #    gateway: #让gateway通过nacos实现自动路由转发
+    #      discovery:
+    #        locator:
+    #          enabled: true #locator.enabled是自动根据URL规则实现路由转发
+    #          lower-case-service-id: true
+    gateway:
+      discovery:
+        locator:
+          enabled: false #不再需要Gateway路由转发
+      routes:
+        #路由规则配置
+        #第一个路由配置，service-a路由规则
+        - id: nacos-client-coupon-distribution #路由唯一标识
+          #lb开头代表基于gateway的负载均衡策略选择实例
+          uri: lb://nacos-client-coupon-distribution
+          #          uri: http://localhost:7002
+          #谓词配置
+          predicates:
+            #Path路径谓词，代表用户端URI如果以/a开头便会转发到service-a实例
+            - Path=/api/coupon_distribution/**
+            #After生效时间谓词，2020年10月15日后该路由才能在网关对外暴露
+            - After=2020-10-05T00:00:00.000+08:00[Asia/Shanghai]
+            #谓词配置
+          filters:
+            #忽略掉第一层前缀进行转发
+            - StripPrefix=1
+            #为响应头附加X-Response=Blue
+            - AddResponseHeader=X-Response,Blue
+          #第二个路由配置，service-b路由规则
+        - id: nacos-client-coupon-template
+          uri: lb://nacos-client-coupon-template
+          predicates:
+            - Path=/coupon_template/**
+          filters:
+            - StripPrefix=0
+server:
+  port: 9000 #服务端口号

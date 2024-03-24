@@ -1,0 +1,78 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /coupon_distribution
+
+spring:
+  application:
+    name: nacos-client-coupon-distribution
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.formate_sql: true
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://192.168.56.101:3306/coupon_swarm?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&allowPublicKeyRetrieval=true
+    username: root
+    password: VvkGNLf@NhG8
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: CouponHikariCp
+  redis:
+    database: 0
+    host: 192.168.56.101
+    port: 6379
+    timeout: 10000
+    password: '123456:'
+  kafka:
+    bootstrap-servers:
+      - 192.168.56.101:9092
+    consumer:
+      #消费者组id
+      group-id: coupon-x
+      #consumer从哪一个节点开始消费
+      auto-offset-reset: latest
+  cloud:
+    #    loadbalancer:
+    #      retry:
+    #        enabled: true
+    nacos:
+      discovery:
+        server-addr: http://192.168.56.101:8848/
+
+logging:
+  level:
+    org.example.coupon: debug
+#feign:
+#  hystrix:
+#    #启用hystrix
+#    enabled: true
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 2000
+#        readTimeout: 5000
+#      nacos-client-coupon-tempalte:
+#        connectTimeout: 3000
+#        readTimeout: 5000
+dubbo:
+  application:
+    # 不要与实例的名称相同
+    name: dubbo-client-coupon-distribution
+    #单机环境多实例启动dubbo时会爆出 qos-server can not bind localhost:22222
+    qos-port: 22223
+  protocol:
+    name: dubbo
+    port: 20881
+  registry:
+    address: nacos://192.168.56.101:8848
