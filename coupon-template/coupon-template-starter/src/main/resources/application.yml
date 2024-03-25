@@ -38,6 +38,10 @@ spring:
     nacos:
       discovery:
         server-addr: http://192.168.56.101:8848/
+    sentinel: #Sentinel Dashboard通信地址
+      transport:
+        dashboard: 192.168.56.101:8080
+      eager: true #取消控制台懒加载
 dubbo:
   application:
     # 不要与实例的名称相同
